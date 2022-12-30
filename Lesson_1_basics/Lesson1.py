@@ -243,29 +243,46 @@
 # модифицировать это условие для чисел со знаком?
 # Примечание: если обособление чисел кавычками не будет получаться - можете вернуться к его
 # реализации позже. Главное: дополнить числа до двух разрядов нулём!
-
-my_list = ['в', '05', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+05', 'градусов']
-
-my_list.insert(1, '"')
-my_list.insert(3, '"')
-my_list.insert(5, '"')
-my_list.insert(7, '"')
-my_list.insert(12, '"')
-my_list.insert(14, '"')
-
-for elem in my_list:
-
-    if type(elem[:-1]) is int:
-        elem += '0'
-
-print(my_list)
-line = ''
-for elem in my_list:
-    line = line + ' ' + elem
-print(line)
-
+#
+# my_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
+#
+# new_list = []
+#
+# for elem in my_list:
+#     if elem.isdigit():
+#         new_list.extend(['"', f'{int(elem):02}', '"'])
+#     elif (elem.startswith('+') or elem.startswith('-')) and elem[1:].isdigit():
+#         new_list.extend(['"',f'{elem[0]}{int(elem):02}', '"'])
+#     else:
+#         new_list.append(elem)
+#
+# out_info = ' '.join(new_list)
+# print(out_info)
 # 3. *(вместо задачи 2) Решить задачу 2 не создавая новый список (как говорят, in place). Эта задача
 # намного серьёзнее, чем может сначала показаться.
+my_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
+
+
+
+for elem in my_list:
+    if elem.isdigit():
+        my_list.extend(['"', f'{int(elem):02}', '"'])
+    elif (elem.startswith('+') or elem.startswith('-')) and elem[1:].isdigit():
+        my_list.extend(['"',f'{elem[0]}{int(elem):02}', '"'])
+    else:
+        my_list.append(elem)
+    if elem == 'градусов':
+        break
+
+
+print(my_list)
+for elem in my_list:
+    while elem != 'градусов':
+        my_list.pop(0)
+        break
+out_info = ' '.join(my_list)
+print(out_info)
+print(my_list)
 # 4. Дан список, содержащий искажённые данные с должностями и именами сотрудников:
 # ['инженер-конструктор Игорь', 'главный бухгалтер МАРИНА',
 # 'токарь высшего разряда нИКОЛАй', 'директор аэлита']
