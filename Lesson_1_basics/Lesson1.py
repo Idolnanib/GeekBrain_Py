@@ -260,35 +260,41 @@
 # print(out_info)
 # 3. *(вместо задачи 2) Решить задачу 2 не создавая новый список (как говорят, in place). Эта задача
 # намного серьёзнее, чем может сначала показаться.
-my_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
-
-
-
-for elem in my_list:
-    if elem.isdigit():
-        my_list.extend(['"', f'{int(elem):02}', '"'])
-    elif (elem.startswith('+') or elem.startswith('-')) and elem[1:].isdigit():
-        my_list.extend(['"',f'{elem[0]}{int(elem):02}', '"'])
-    else:
-        my_list.append(elem)
-    if elem == 'градусов':
-        break
-
-
-print(my_list)
-for elem in my_list:
-    while elem != 'градусов':
-        my_list.pop(0)
-        break
-out_info = ' '.join(my_list)
-print(out_info)
-print(my_list)
+# my_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
+#
+#
+#
+# for elem in my_list:
+#     if elem.isdigit():
+#         my_list.extend(['"', f'{int(elem):02}', '"'])
+#     elif (elem.startswith('+') or elem.startswith('-')) and elem[1:].isdigit():
+#         my_list.extend(['"',f'{elem[0]}{int(elem):02}', '"'])
+#     else:
+#         my_list.append(elem)
+#     if elem == 'градусов':
+#         break
+#
+#
+# print(my_list)
+# for elem in my_list:
+#     while elem != 'градусов':
+#         my_list.pop(0)
+#         break
+# out_info = ' '.join(my_list)
+# print(out_info)
+# print(my_list)
 # 4. Дан список, содержащий искажённые данные с должностями и именами сотрудников:
 # ['инженер-конструктор Игорь', 'главный бухгалтер МАРИНА',
 # 'токарь высшего разряда нИКОЛАй', 'директор аэлита']
 # Известно, что имя сотрудника всегда в конце строки. Сформировать из этих имён и вывести на
 # экран фразы вида: 'Привет, Игорь!' Подумать, как получить имена сотрудников из элементов
 # списка, как привести их к корректному виду. Можно ли при этом не создавать новый список?
+bad_list = ['инженер-конструктор Игорь', 'главный бухгалтер МАРИНА', 'токарь высшего разряда нИКОЛАй', 'директор аэлита']
+
+for elem in bad_list:
+    print('Привет ',elem.split()[-1].title())
+
+
 # 5. Создать вручную список, содержащий цены на товары (10–20 товаров), например:
 # © geekbrains.ru 19
 # [57.8, 46.51, 97, ...]
