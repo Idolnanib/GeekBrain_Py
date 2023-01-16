@@ -43,19 +43,20 @@
 # }
 # Подумайте: полезен ли будет вам оператор распаковки? Как поступить, если потребуется сортировка по ключам? Можно ли использовать словарь в этом случае?
 
-# list_of_names = ["Иван", "Мария", "Петр", "Илья"]
-#
-# def thesaurus(list_of_names):
-#     vocabulary = {}
-#     vocabulary = {}
-#     for names in list_of_names:
-#
-#         vocabulary = dict.fromkeys([names[0]], names)
-#         vocabulary = dict.update([names[0], names])
-#
-#     return vocabulary
-#
-# print(thesaurus(list_of_names))
+
+
+def thesaurus(*names):
+    out_dict = dict()
+    for name in names:
+        out_dict.setdefault(name[0], [])
+        out_dict[name[0]].append(name)
+    return out_dict
+
+
+
+
+
+print(thesaurus("Иван", "Мария", "Петр", "Илья"))
 
 # 4. * (вместо задачи 3) Написать функцию thesaurus_adv(), принимающую в качестве аргументов строки в формате «Имя Фамилия» и возвращающую словарь, в котором ключи — первые буквы фамилий, а значения — словари, реализованные по схеме предыдущего задания и содержащие записи, в которых фамилия начинается с соответствующей буквы. Например:
 # >>>thesaurus_adv("Иван Сергеев", "Инна Серова", "Петр Алексеев", "Илья Иванов", "Анна Савельева")
@@ -77,20 +78,20 @@
 # >>> get_jokes(2)
 # ["лес завтра зеленый", "город вчера веселый"]
 
-import random
-
-nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
-adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
-adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
-my_list = []
-def get_jokes(n):
-    flag = 0
-    while flag != n:
-        my_list.append(nouns[random.randint(0, len(nouns)-1)] + ' ' + adverbs[random.randint(0, len(adverbs)-1)] \
-                                                                 + ' ' + adjectives[random.randint(0, len(adjectives)-1)])
-        flag += 1
-
-    return my_list
-
-print(get_jokes(12))
+# import random
+#
+# nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
+# adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
+# adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
+# my_list = []
+# def get_jokes(n):
+#     flag = 0
+#     while flag != n:
+#         my_list.append(nouns[random.randint(0, len(nouns)-1)] + ' ' + adverbs[random.randint(0, len(adverbs)-1)] \
+#                                                                  + ' ' + adjectives[random.randint(0, len(adjectives)-1)])
+#         flag += 1
+#
+#     return my_list
+#
+# print(get_jokes(12))
 
