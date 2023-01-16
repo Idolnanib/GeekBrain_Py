@@ -4,6 +4,19 @@
 # >>> num_translate("eight")
 # "восемь"
 # Если перевод сделать невозможно, вернуть None. Подумайте, как и где лучше хранить информацию, необходимую для перевода: какой тип данных выбрать, в теле функции или снаружи.
+from translate import Translator
+
+def num_translate(number):
+    translator = Translator(to_lang='Russian')
+    translation = translator.translate(number)
+    if number == 'one':
+        translation = 'один'
+    return translation
+
+print(num_translate('one'))
+print(num_translate('eight'))
+
+
 # 2. * (вместо задачи 1) Доработать предыдущую функцию в num_translate_adv(): реализовать корректную работу с числительными, начинающимися с заглавной буквы — результат тоже должен быть с заглавной. Например:
 # >>> num_translate_adv("One")
 # "Один"
