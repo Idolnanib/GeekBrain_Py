@@ -13,8 +13,8 @@ def num_translate(number):
         translation = 'один'
     return translation
 
-print(num_translate('one'))
-print(num_translate('eight'))
+print(num_translate('One'))
+print(num_translate('Eight'))
 
 
 # 2. * (вместо задачи 1) Доработать предыдущую функцию в num_translate_adv(): реализовать корректную работу с числительными, начинающимися с заглавной буквы — результат тоже должен быть с заглавной. Например:
